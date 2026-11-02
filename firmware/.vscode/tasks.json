@@ -1,0 +1,65 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "cmake --build --preset Debug",
+            "options": { "cwd": "${workspaceFolder}" },
+            "group": { "kind": "build", "isDefault": true },
+            "problemMatcher": ["$gcc"],
+            "presentation": { "reveal": "silent", "panel": "shared", "clear": true }
+        },
+        {
+            "label": "configure",
+            "detail": "Only needed after editing CMakeLists.txt or regenerating from the .ioc.",
+            "type": "shell",
+            "command": "cmake --preset Debug",
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": []
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "cmake --build --preset Debug --target clean",
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": []
+        },
+        {
+            "label": "rebuild",
+            "detail": "Wipe build/ and start from scratch.",
+            "type": "shell",
+            "command": "rm -rf build && cmake --preset Debug && cmake --build --preset Debug",
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "flash",
+            "detail": "Build, then program + verify + reset. Not needed before F5 -- the debugger flashes too.",
+            "type": "shell",
+            "command": "openocd -f openocd.cfg -c \"program build/Debug/mouse-mover.elf verify reset exit\"",
+            "options": { "cwd": "${workspaceFolder}" },
+            "dependsOn": "build",
+            "dependsOrder": "sequence",
+            "problemMatcher": [],
+            "presentation": { "reveal": "always", "panel": "shared" }
+        },
+        {
+            "label": "size",
+            "type": "shell",
+            "command": "arm-none-eabi-size -G build/Debug/mouse-mover.elf",
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": []
+        },
+        {
+            "label": "test",
+            "detail": "Build and run the host unit tests in test/ (PC compiler, fake board).",
+            "type": "shell",
+            "command": "cmake -S test -B build/tests && cmake --build build/tests && ctest --test-dir build/tests --output-on-failure",
+            "options": { "cwd": "${workspaceFolder}" },
+            "group": "test",
+            "problemMatcher": ["$gcc"],
+            "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+        }
+    ]
+}

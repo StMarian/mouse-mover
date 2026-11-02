@@ -1,0 +1,17 @@
+build/
+CMakeUserPresets.json
+*.bak
+
+.cache/
+.vscode/ipch/
+.vscode/.browse.VC.db*
+
+*.elf
+*.bin
+*.hex
+*.map
+*.su
+
+.DS_Store
+Thumbs.db
+desktop.ini

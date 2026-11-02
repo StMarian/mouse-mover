@@ -1,0 +1,17 @@
+# Same style as App/.clang-format.
+BasedOnStyle: LLVM
+IndentWidth: 4
+ColumnLimit: 120
+BreakBeforeBraces: Allman
+IndentCaseLabels: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Never
+AllowShortCaseLabelsOnASingleLine: false
+PointerAlignment: Right
+AlignConsecutiveMacros: Consecutive
+AlignTrailingComments: true
+SpacesBeforeTrailingComments: 1
+SortIncludes: Never
+InsertNewlineAtEOF: true

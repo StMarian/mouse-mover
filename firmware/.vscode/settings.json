@@ -1,0 +1,17 @@
+{
+    "cortex-debug.gdbPath": "/usr/bin/gdb-multiarch",
+    "cortex-debug.armToolchainPath": "/usr/bin",
+    "cortex-debug.openocdPath": "/usr/bin/openocd",
+    "cortex-debug.showRTOS": false,
+
+    "cmake.useCMakePresets": "always",
+    "cmake.configureOnOpen": false,
+    "cmake.configureOnEdit": false,
+
+    "files.associations": {
+        "*.ld": "linkerscript",
+        "*.s": "arm",
+        "*.ioc": "ini",
+        "*.cfg": "tcl"
+    }
+}
